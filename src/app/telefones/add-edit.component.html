@@ -1,0 +1,32 @@
+﻿<h1 *ngIf="isAddMode">Adicionar Telefone</h1>
+<h1 *ngIf="!isAddMode">Editar Telefone</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-3">
+            <label>Tipo Telefone</label>
+            <select formControlName="tipoTelefone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tipoTelefone.errors }">
+                <option value=""></option>
+                <option value="Comercial">Comercial</option>
+                <option value="Residencial">Residencial</option>
+               
+            </select>
+           
+        </div>
+        <div class="form-group col-5">
+            <label>Telefone</label>
+            <input type="text" formControlName="telefone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefone.errors }" />
+          
+        </div>
+        
+    </div>
+    
+  
+  
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Salvar
+        </button>
+        <a routerLink="/telefones" class="btn btn-link">Cancelar</a>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+﻿<h1>Telefones</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Adicionar</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Número</th>
+            <th style="width: 30%">Tipo</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let phone of telefones">
+            <td>{{phone.telefone}}</td>
+            <td>{{phone.tipoTelefone}}</td>
+           
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{phone.id}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="delete(phone.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="phone.delete">
+                    <span *ngIf="phone.delete" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!phone.delete">Excluir</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!telefones">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
