@@ -6,7 +6,7 @@ import { Telefone } from '@app/_models';
 
 @Component({ templateUrl: 'list.component.html' })
 export class ListComponent implements OnInit {
-    telefones!: Telefone[];
+    telefones!: any;
 
     constructor(private telefoneService: TelefoneService) {}
 
@@ -17,9 +17,7 @@ export class ListComponent implements OnInit {
     }
 
     delete(id: number) {
-        const telefone = this.telefones.find(x => x.id === id);
-        if (!telefone) return;
-        telefone.delete=false;
+        
         this.telefoneService.delete(id)
             .pipe(first())
             .subscribe(telefone => this.telefones = telefone);

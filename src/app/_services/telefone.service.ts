@@ -11,7 +11,7 @@ export class TelefoneService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<any[]>(baseUrl);
+        return this.http.get<any>(baseUrl);
     }
 
     getById(id: string) {
